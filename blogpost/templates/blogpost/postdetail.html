@@ -1,0 +1,35 @@
+{% extends 'core/home_page.html' %}
+
+
+{% block container %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-post"><a href="/">Ana Sayfa</a></li>
+    <li class="breadcrumb-post"><a href="{{ post.get_absolute_url }}">{{ post.category }}</a></li>
+    <li class="breadcrumb-post" aria-current="page">{{ post.title }}</li>
+  </ol>
+</nav>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ post.title }}</h5>
+      {% if post.category %}
+      <h6 class="card-subtitle mb-2 text-body-secondary">Kategori: {{ post.category.title }}</h6>
+      {% endif %}
+      <p class="text-justify my-3">
+        {{post.content}}
+      </p>
+      <ul class="list-unstyled">
+        <li>
+          Olusturulma Zamani {{ post.created_at|date:"d/m/Y H:i" }}
+        </li>
+        <li>
+          Olusturulma Zamani {{ post.updated_at|date:"d/m/Y H:i" }}
+        </li>
+      </ul>
+    
+  
+      <a href="/" class="btn btn-danger my-3">Geri Don</a>
+    </div>
+  </div>
+{% endblock container %}
